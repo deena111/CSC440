@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--style-->
+    <style>
+    /* body tag selector: define a default font. Never use Comic Sans. */
+    body {
+        background: linear-gradient(to bottom, #ffccff 0%, #ccccff 100%);
+        font-family: "Comic Sans MS";
+    }
+    /* .section class selector: set the font of all tags with class="section" */
+    .section {
+      font-family: arial;
+    }
+    /* h2 descendants of .section class: set a background color for all h2 text in sections */
+    .section h2 {
+      background: linear-gradient(to bottom, #cc99ff 0%, #ff99ff 100%);
+      font-family: Georgia;}
+    /* Put the image on the right */
+    #photo { float: right; }
+    </style>
+
+</head>
+
+
+<body>
+  <h1>
+      <font color=#006266><font size=10><center>Result</font size></center>
+  </h1>
+  <hr/>
+  <div class="section">
+  <h2 class="section" id="fill">
+      welcome..
+      <span class="s1" id="result1"></span>
+  </h2>
+  </div>
+<div class="section">
+  <h2 class="section" id="Interest">
+    interest:
+  </h2>
+  <span class="s2" id="result2"></span>
+</div>
+  <div class="section">
+  <h2 class="section" id="like">
+    <span class="s3" id="result3"></span>
+  </h2>
+  <span class="s3" id="result4"></span>
+</div>
+
+  <script>
+    if(typeof(Storage)!=="undefined"){
+
+
+      document.getElementById("result1").innerHTML+=localStorage.getItem("firstname");
+      var checkbox=localStorage.getItem("checkbox");
+      document.getElementById("result2").innerHTML=checkbox;
+      count=0;
+      var checkbox1=[];
+      checkbox1=checkbox.split(",");
+      for(var i=0;i<checkbox1.length;i++){
+        if(checkbox1[i] == "Swimming"){
+          count+=50;
+        }else if(checkbox1[i] == "reading"){
+          count+=50;
+        }
+      }
+      document.getElementById("result2").innerHTML+="<br>our interest match: "+count+"%<br>Also, I interest in Swimming and reading.";
+      var see=localStorage.getItem("like");
+      document.getElementById("result3").innerHTML=see+":<br> ";
+      if(see=="Meme"){
+        document.getElementById("result4").innerHTML+='<img src="5ba5ea0a-8574-4d29-8ffc-fe45f353aea6.JPG">';
+      }else if(see=="MyCV"){
+        document.getElementById("result4").innerHTML+='if you want to see my CV <br><button><a href="cv.html">click here</a></button>';
+      }
+    }else{
+      document.getElementById("result1").innerHTML = "Sorry, your browser does not support Web Storage...";
+    }
+  </script>
+
+</body>
+
+</html>
